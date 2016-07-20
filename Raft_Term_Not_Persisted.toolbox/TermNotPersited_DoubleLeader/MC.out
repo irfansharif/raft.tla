@@ -1,0 +1,788 @@
+@!@!@STARTMSG 2262:0 @!@!@
+TLC2 Version 2.08 of 21 December 2015
+@!@!@ENDMSG 2262 @!@!@
+@!@!@STARTMSG 2187:0 @!@!@
+Running in Model-Checking mode.
+@!@!@ENDMSG 2187 @!@!@
+@!@!@STARTMSG 2220:0 @!@!@
+Starting SANY...
+@!@!@ENDMSG 2220 @!@!@
+Parsing file MC.tla
+Parsing file Raft_Term_Not_Persisted.tla
+Parsing file E:\code\TLAPlus\toolbox\plugins\org.lamport.tlatools_1.0.0.201512230951\tla2sany\StandardModules\TLC.tla
+Parsing file E:\code\TLAPlus\toolbox\plugins\org.lamport.tlatools_1.0.0.201512230951\tla2sany\StandardModules\Naturals.tla
+Parsing file E:\code\TLAPlus\toolbox\plugins\org.lamport.tlatools_1.0.0.201512230951\tla2sany\StandardModules\FiniteSets.tla
+Parsing file E:\code\TLAPlus\toolbox\plugins\org.lamport.tlatools_1.0.0.201512230951\tla2sany\StandardModules\Sequences.tla
+Semantic processing of module Naturals
+Semantic processing of module Sequences
+Semantic processing of module FiniteSets
+Semantic processing of module TLC
+Semantic processing of module Raft_Term_Not_Persisted
+Semantic processing of module MC
+@!@!@STARTMSG 2219:0 @!@!@
+SANY finished.
+@!@!@ENDMSG 2219 @!@!@
+@!@!@STARTMSG 2185:0 @!@!@
+Starting... (2016-07-20 10:03:16)
+@!@!@ENDMSG 2185 @!@!@
+@!@!@STARTMSG 2189:0 @!@!@
+Computing initial states...
+@!@!@ENDMSG 2189 @!@!@
+@!@!@STARTMSG 2190:0 @!@!@
+Finished computing initial states: 1 distinct state generated.
+@!@!@ENDMSG 2190 @!@!@
+@!@!@STARTMSG 2200:0 @!@!@
+Progress(9) at 2016-07-20 10:03:19: 477026 states generated (476,933 s/min), 152462 distinct states found (152,462 ds/min), 123342 states left on queue.
+@!@!@ENDMSG 2200 @!@!@
+@!@!@STARTMSG 2109:1 @!@!@
+Successor state is not completely specified by the next-state action.
+
+@!@!@ENDMSG 2109 @!@!@
+@!@!@STARTMSG 2121:1 @!@!@
+The behavior up to this point is:
+@!@!@ENDMSG 2121 @!@!@
+@!@!@STARTMSG 2217:4 @!@!@
+1: <Initial predicate>
+/\ elections = {}
+/\ committedLogDecrease = FALSE
+/\ messages = << >>
+/\ clientRequests = 1
+/\ matchIndex = [ s1 |-> [s1 |-> 0, s2 |-> 0, s3 |-> 0],
+  s2 |-> [s1 |-> 0, s2 |-> 0, s3 |-> 0],
+  s3 |-> [s1 |-> 0, s2 |-> 0, s3 |-> 0] ]
+/\ log = [s1 |-> <<>>, s2 |-> <<>>, s3 |-> <<>>]
+/\ state = [s1 |-> Follower, s2 |-> Follower, s3 |-> Follower]
+/\ allLogs = {}
+/\ commitIndex = [s1 |-> 0, s2 |-> 0, s3 |-> 0]
+/\ currentTerm = [s1 |-> 1, s2 |-> 1, s3 |-> 1]
+/\ votesResponded = [s1 |-> {}, s2 |-> {}, s3 |-> {}]
+/\ committedLog = <<>>
+/\ nextIndex = [ s1 |-> [s1 |-> 1, s2 |-> 1, s3 |-> 1],
+  s2 |-> [s1 |-> 1, s2 |-> 1, s3 |-> 1],
+  s3 |-> [s1 |-> 1, s2 |-> 1, s3 |-> 1] ]
+/\ votesGranted = [s1 |-> {}, s2 |-> {}, s3 |-> {}]
+/\ voterLog = [s1 |-> << >>, s2 |-> << >>, s3 |-> << >>]
+/\ votedFor = [s1 |-> Nil, s2 |-> Nil, s3 |-> Nil]
+
+@!@!@ENDMSG 2217 @!@!@
+@!@!@STARTMSG 2217:4 @!@!@
+2: <Action line 475, col 9 to line 486, col 58 of module Raft_Term_Not_Persisted>
+/\ elections = {}
+/\ committedLogDecrease = FALSE
+/\ messages = << >>
+/\ clientRequests = 1
+/\ matchIndex = [ s1 |-> [s1 |-> 0, s2 |-> 0, s3 |-> 0],
+  s2 |-> [s1 |-> 0, s2 |-> 0, s3 |-> 0],
+  s3 |-> [s1 |-> 0, s2 |-> 0, s3 |-> 0] ]
+/\ log = [s1 |-> <<>>, s2 |-> <<>>, s3 |-> <<>>]
+/\ state = [s1 |-> Follower, s2 |-> Follower, s3 |-> Candidate]
+/\ allLogs = {<<>>}
+/\ commitIndex = [s1 |-> 0, s2 |-> 0, s3 |-> 0]
+/\ currentTerm = [s1 |-> 1, s2 |-> 1, s3 |-> 2]
+/\ votesResponded = [s1 |-> {}, s2 |-> {}, s3 |-> {}]
+/\ committedLog = <<>>
+/\ nextIndex = [ s1 |-> [s1 |-> 1, s2 |-> 1, s3 |-> 1],
+  s2 |-> [s1 |-> 1, s2 |-> 1, s3 |-> 1],
+  s3 |-> [s1 |-> 1, s2 |-> 1, s3 |-> 1] ]
+/\ votesGranted = [s1 |-> {}, s2 |-> {}, s3 |-> {}]
+/\ voterLog = [s1 |-> << >>, s2 |-> << >>, s3 |-> << >>]
+/\ votedFor = [s1 |-> Nil, s2 |-> Nil, s3 |-> Nil]
+
+@!@!@ENDMSG 2217 @!@!@
+@!@!@STARTMSG 2217:4 @!@!@
+3: <Action line 475, col 9 to line 486, col 58 of module Raft_Term_Not_Persisted>
+/\ elections = {}
+/\ committedLogDecrease = FALSE
+/\ messages = ( [ mtype |-> RequestVoteRequest,
+    mterm |-> 2,
+    mlastLogTerm |-> 0,
+    mlastLogIndex |-> 0,
+    msource |-> "s3",
+    mdest |-> "s1" ] :>
+      1 )
+/\ clientRequests = 1
+/\ matchIndex = [ s1 |-> [s1 |-> 0, s2 |-> 0, s3 |-> 0],
+  s2 |-> [s1 |-> 0, s2 |-> 0, s3 |-> 0],
+  s3 |-> [s1 |-> 0, s2 |-> 0, s3 |-> 0] ]
+/\ log = [s1 |-> <<>>, s2 |-> <<>>, s3 |-> <<>>]
+/\ state = [s1 |-> Follower, s2 |-> Follower, s3 |-> Candidate]
+/\ allLogs = {<<>>}
+/\ commitIndex = [s1 |-> 0, s2 |-> 0, s3 |-> 0]
+/\ currentTerm = [s1 |-> 1, s2 |-> 1, s3 |-> 2]
+/\ votesResponded = [s1 |-> {}, s2 |-> {}, s3 |-> {}]
+/\ committedLog = <<>>
+/\ nextIndex = [ s1 |-> [s1 |-> 1, s2 |-> 1, s3 |-> 1],
+  s2 |-> [s1 |-> 1, s2 |-> 1, s3 |-> 1],
+  s3 |-> [s1 |-> 1, s2 |-> 1, s3 |-> 1] ]
+/\ votesGranted = [s1 |-> {}, s2 |-> {}, s3 |-> {}]
+/\ voterLog = [s1 |-> << >>, s2 |-> << >>, s3 |-> << >>]
+/\ votedFor = [s1 |-> Nil, s2 |-> Nil, s3 |-> Nil]
+
+@!@!@ENDMSG 2217 @!@!@
+@!@!@STARTMSG 2217:4 @!@!@
+4: <Action line 475, col 9 to line 486, col 58 of module Raft_Term_Not_Persisted>
+/\ elections = {}
+/\ committedLogDecrease = FALSE
+/\ messages = ( [ mtype |-> RequestVoteRequest,
+    mterm |-> 2,
+    mlastLogTerm |-> 0,
+    mlastLogIndex |-> 0,
+    msource |-> "s3",
+    mdest |-> "s1" ] :>
+      1 )
+/\ clientRequests = 1
+/\ matchIndex = [ s1 |-> [s1 |-> 0, s2 |-> 0, s3 |-> 0],
+  s2 |-> [s1 |-> 0, s2 |-> 0, s3 |-> 0],
+  s3 |-> [s1 |-> 0, s2 |-> 0, s3 |-> 0] ]
+/\ log = [s1 |-> <<>>, s2 |-> <<>>, s3 |-> <<>>]
+/\ state = [s1 |-> Candidate, s2 |-> Follower, s3 |-> Candidate]
+/\ allLogs = {<<>>}
+/\ commitIndex = [s1 |-> 0, s2 |-> 0, s3 |-> 0]
+/\ currentTerm = [s1 |-> 2, s2 |-> 1, s3 |-> 2]
+/\ votesResponded = [s1 |-> {}, s2 |-> {}, s3 |-> {}]
+/\ committedLog = <<>>
+/\ nextIndex = [ s1 |-> [s1 |-> 1, s2 |-> 1, s3 |-> 1],
+  s2 |-> [s1 |-> 1, s2 |-> 1, s3 |-> 1],
+  s3 |-> [s1 |-> 1, s2 |-> 1, s3 |-> 1] ]
+/\ votesGranted = [s1 |-> {}, s2 |-> {}, s3 |-> {}]
+/\ voterLog = [s1 |-> << >>, s2 |-> << >>, s3 |-> << >>]
+/\ votedFor = [s1 |-> Nil, s2 |-> Nil, s3 |-> Nil]
+
+@!@!@ENDMSG 2217 @!@!@
+@!@!@STARTMSG 2217:4 @!@!@
+5: <Action line 475, col 9 to line 486, col 58 of module Raft_Term_Not_Persisted>
+/\ elections = {}
+/\ committedLogDecrease = FALSE
+/\ messages = ( [ mtype |-> RequestVoteRequest,
+    mterm |-> 2,
+    mlastLogTerm |-> 0,
+    mlastLogIndex |-> 0,
+    msource |-> "s3",
+    mdest |-> "s1" ] :>
+      1 @@
+  [ mtype |-> RequestVoteRequest,
+    mterm |-> 2,
+    mlastLogTerm |-> 0,
+    mlastLogIndex |-> 0,
+    msource |-> "s3",
+    mdest |-> "s3" ] :>
+      1 )
+/\ clientRequests = 1
+/\ matchIndex = [ s1 |-> [s1 |-> 0, s2 |-> 0, s3 |-> 0],
+  s2 |-> [s1 |-> 0, s2 |-> 0, s3 |-> 0],
+  s3 |-> [s1 |-> 0, s2 |-> 0, s3 |-> 0] ]
+/\ log = [s1 |-> <<>>, s2 |-> <<>>, s3 |-> <<>>]
+/\ state = [s1 |-> Candidate, s2 |-> Follower, s3 |-> Candidate]
+/\ allLogs = {<<>>}
+/\ commitIndex = [s1 |-> 0, s2 |-> 0, s3 |-> 0]
+/\ currentTerm = [s1 |-> 2, s2 |-> 1, s3 |-> 2]
+/\ votesResponded = [s1 |-> {}, s2 |-> {}, s3 |-> {}]
+/\ committedLog = <<>>
+/\ nextIndex = [ s1 |-> [s1 |-> 1, s2 |-> 1, s3 |-> 1],
+  s2 |-> [s1 |-> 1, s2 |-> 1, s3 |-> 1],
+  s3 |-> [s1 |-> 1, s2 |-> 1, s3 |-> 1] ]
+/\ votesGranted = [s1 |-> {}, s2 |-> {}, s3 |-> {}]
+/\ voterLog = [s1 |-> << >>, s2 |-> << >>, s3 |-> << >>]
+/\ votedFor = [s1 |-> Nil, s2 |-> Nil, s3 |-> Nil]
+
+@!@!@ENDMSG 2217 @!@!@
+@!@!@STARTMSG 2217:4 @!@!@
+6: <Action line 475, col 9 to line 486, col 58 of module Raft_Term_Not_Persisted>
+/\ elections = {}
+/\ committedLogDecrease = FALSE
+/\ messages = ( [ mtype |-> RequestVoteResponse,
+    mterm |-> 2,
+    msource |-> "s3",
+    mdest |-> "s3",
+    mlog |-> <<>>,
+    mvoteGranted |-> TRUE ] :>
+      1 @@
+  [ mtype |-> RequestVoteRequest,
+    mterm |-> 2,
+    mlastLogTerm |-> 0,
+    mlastLogIndex |-> 0,
+    msource |-> "s3",
+    mdest |-> "s1" ] :>
+      1 @@
+  [ mtype |-> RequestVoteRequest,
+    mterm |-> 2,
+    mlastLogTerm |-> 0,
+    mlastLogIndex |-> 0,
+    msource |-> "s3",
+    mdest |-> "s3" ] :>
+      0 )
+/\ clientRequests = 1
+/\ matchIndex = [ s1 |-> [s1 |-> 0, s2 |-> 0, s3 |-> 0],
+  s2 |-> [s1 |-> 0, s2 |-> 0, s3 |-> 0],
+  s3 |-> [s1 |-> 0, s2 |-> 0, s3 |-> 0] ]
+/\ log = [s1 |-> <<>>, s2 |-> <<>>, s3 |-> <<>>]
+/\ state = [s1 |-> Candidate, s2 |-> Follower, s3 |-> Candidate]
+/\ allLogs = {<<>>}
+/\ commitIndex = [s1 |-> 0, s2 |-> 0, s3 |-> 0]
+/\ currentTerm = [s1 |-> 2, s2 |-> 1, s3 |-> 2]
+/\ votesResponded = [s1 |-> {}, s2 |-> {}, s3 |-> {}]
+/\ committedLog = <<>>
+/\ nextIndex = [ s1 |-> [s1 |-> 1, s2 |-> 1, s3 |-> 1],
+  s2 |-> [s1 |-> 1, s2 |-> 1, s3 |-> 1],
+  s3 |-> [s1 |-> 1, s2 |-> 1, s3 |-> 1] ]
+/\ votesGranted = [s1 |-> {}, s2 |-> {}, s3 |-> {}]
+/\ voterLog = [s1 |-> << >>, s2 |-> << >>, s3 |-> << >>]
+/\ votedFor = [s1 |-> Nil, s2 |-> Nil, s3 |-> "s3"]
+
+@!@!@ENDMSG 2217 @!@!@
+@!@!@STARTMSG 2217:4 @!@!@
+7: <Action line 475, col 9 to line 486, col 58 of module Raft_Term_Not_Persisted>
+/\ elections = {}
+/\ committedLogDecrease = FALSE
+/\ messages = ( [ mtype |-> RequestVoteResponse,
+    mterm |-> 2,
+    msource |-> "s3",
+    mdest |-> "s3",
+    mlog |-> <<>>,
+    mvoteGranted |-> TRUE ] :>
+      0 @@
+  [ mtype |-> RequestVoteRequest,
+    mterm |-> 2,
+    mlastLogTerm |-> 0,
+    mlastLogIndex |-> 0,
+    msource |-> "s3",
+    mdest |-> "s1" ] :>
+      1 @@
+  [ mtype |-> RequestVoteRequest,
+    mterm |-> 2,
+    mlastLogTerm |-> 0,
+    mlastLogIndex |-> 0,
+    msource |-> "s3",
+    mdest |-> "s3" ] :>
+      0 )
+/\ clientRequests = 1
+/\ matchIndex = [ s1 |-> [s1 |-> 0, s2 |-> 0, s3 |-> 0],
+  s2 |-> [s1 |-> 0, s2 |-> 0, s3 |-> 0],
+  s3 |-> [s1 |-> 0, s2 |-> 0, s3 |-> 0] ]
+/\ log = [s1 |-> <<>>, s2 |-> <<>>, s3 |-> <<>>]
+/\ state = [s1 |-> Candidate, s2 |-> Follower, s3 |-> Candidate]
+/\ allLogs = {<<>>}
+/\ commitIndex = [s1 |-> 0, s2 |-> 0, s3 |-> 0]
+/\ currentTerm = [s1 |-> 2, s2 |-> 1, s3 |-> 2]
+/\ votesResponded = [s1 |-> {}, s2 |-> {}, s3 |-> {"s3"}]
+/\ committedLog = <<>>
+/\ nextIndex = [ s1 |-> [s1 |-> 1, s2 |-> 1, s3 |-> 1],
+  s2 |-> [s1 |-> 1, s2 |-> 1, s3 |-> 1],
+  s3 |-> [s1 |-> 1, s2 |-> 1, s3 |-> 1] ]
+/\ votesGranted = [s1 |-> {}, s2 |-> {}, s3 |-> {"s3"}]
+/\ voterLog = [s1 |-> << >>, s2 |-> << >>, s3 |-> [s3 |-> <<>>]]
+/\ votedFor = [s1 |-> Nil, s2 |-> Nil, s3 |-> "s3"]
+
+@!@!@ENDMSG 2217 @!@!@
+@!@!@STARTMSG 2217:4 @!@!@
+8: <Action line 475, col 9 to line 486, col 58 of module Raft_Term_Not_Persisted>
+/\ elections = {}
+/\ committedLogDecrease = FALSE
+/\ messages = ( [ mtype |-> RequestVoteResponse,
+    mterm |-> 2,
+    msource |-> "s1",
+    mdest |-> "s3",
+    mlog |-> <<>>,
+    mvoteGranted |-> TRUE ] :>
+      1 @@
+  [ mtype |-> RequestVoteResponse,
+    mterm |-> 2,
+    msource |-> "s3",
+    mdest |-> "s3",
+    mlog |-> <<>>,
+    mvoteGranted |-> TRUE ] :>
+      0 @@
+  [ mtype |-> RequestVoteRequest,
+    mterm |-> 2,
+    mlastLogTerm |-> 0,
+    mlastLogIndex |-> 0,
+    msource |-> "s3",
+    mdest |-> "s1" ] :>
+      0 @@
+  [ mtype |-> RequestVoteRequest,
+    mterm |-> 2,
+    mlastLogTerm |-> 0,
+    mlastLogIndex |-> 0,
+    msource |-> "s3",
+    mdest |-> "s3" ] :>
+      0 )
+/\ clientRequests = 1
+/\ matchIndex = [ s1 |-> [s1 |-> 0, s2 |-> 0, s3 |-> 0],
+  s2 |-> [s1 |-> 0, s2 |-> 0, s3 |-> 0],
+  s3 |-> [s1 |-> 0, s2 |-> 0, s3 |-> 0] ]
+/\ log = [s1 |-> <<>>, s2 |-> <<>>, s3 |-> <<>>]
+/\ state = [s1 |-> Candidate, s2 |-> Follower, s3 |-> Candidate]
+/\ allLogs = {<<>>}
+/\ commitIndex = [s1 |-> 0, s2 |-> 0, s3 |-> 0]
+/\ currentTerm = [s1 |-> 2, s2 |-> 1, s3 |-> 2]
+/\ votesResponded = [s1 |-> {}, s2 |-> {}, s3 |-> {"s3"}]
+/\ committedLog = <<>>
+/\ nextIndex = [ s1 |-> [s1 |-> 1, s2 |-> 1, s3 |-> 1],
+  s2 |-> [s1 |-> 1, s2 |-> 1, s3 |-> 1],
+  s3 |-> [s1 |-> 1, s2 |-> 1, s3 |-> 1] ]
+/\ votesGranted = [s1 |-> {}, s2 |-> {}, s3 |-> {"s3"}]
+/\ voterLog = [s1 |-> << >>, s2 |-> << >>, s3 |-> [s3 |-> <<>>]]
+/\ votedFor = [s1 |-> "s3", s2 |-> Nil, s3 |-> "s3"]
+
+@!@!@ENDMSG 2217 @!@!@
+@!@!@STARTMSG 2217:4 @!@!@
+9: <Action line 475, col 9 to line 486, col 58 of module Raft_Term_Not_Persisted>
+/\ elections = {}
+/\ committedLogDecrease = FALSE
+/\ messages = ( [ mtype |-> RequestVoteResponse,
+    mterm |-> 2,
+    msource |-> "s1",
+    mdest |-> "s3",
+    mlog |-> <<>>,
+    mvoteGranted |-> TRUE ] :>
+      0 @@
+  [ mtype |-> RequestVoteResponse,
+    mterm |-> 2,
+    msource |-> "s3",
+    mdest |-> "s3",
+    mlog |-> <<>>,
+    mvoteGranted |-> TRUE ] :>
+      0 @@
+  [ mtype |-> RequestVoteRequest,
+    mterm |-> 2,
+    mlastLogTerm |-> 0,
+    mlastLogIndex |-> 0,
+    msource |-> "s3",
+    mdest |-> "s1" ] :>
+      0 @@
+  [ mtype |-> RequestVoteRequest,
+    mterm |-> 2,
+    mlastLogTerm |-> 0,
+    mlastLogIndex |-> 0,
+    msource |-> "s3",
+    mdest |-> "s3" ] :>
+      0 )
+/\ clientRequests = 1
+/\ matchIndex = [ s1 |-> [s1 |-> 0, s2 |-> 0, s3 |-> 0],
+  s2 |-> [s1 |-> 0, s2 |-> 0, s3 |-> 0],
+  s3 |-> [s1 |-> 0, s2 |-> 0, s3 |-> 0] ]
+/\ log = [s1 |-> <<>>, s2 |-> <<>>, s3 |-> <<>>]
+/\ state = [s1 |-> Candidate, s2 |-> Follower, s3 |-> Candidate]
+/\ allLogs = {<<>>}
+/\ commitIndex = [s1 |-> 0, s2 |-> 0, s3 |-> 0]
+/\ currentTerm = [s1 |-> 2, s2 |-> 1, s3 |-> 2]
+/\ votesResponded = [s1 |-> {}, s2 |-> {}, s3 |-> {"s1", "s3"}]
+/\ committedLog = <<>>
+/\ nextIndex = [ s1 |-> [s1 |-> 1, s2 |-> 1, s3 |-> 1],
+  s2 |-> [s1 |-> 1, s2 |-> 1, s3 |-> 1],
+  s3 |-> [s1 |-> 1, s2 |-> 1, s3 |-> 1] ]
+/\ votesGranted = [s1 |-> {}, s2 |-> {}, s3 |-> {"s1", "s3"}]
+/\ voterLog = [s1 |-> << >>, s2 |-> << >>, s3 |-> [s1 |-> <<>>, s3 |-> <<>>]]
+/\ votedFor = [s1 |-> "s3", s2 |-> Nil, s3 |-> "s3"]
+
+@!@!@ENDMSG 2217 @!@!@
+@!@!@STARTMSG 2217:4 @!@!@
+10: <Action line 475, col 9 to line 486, col 58 of module Raft_Term_Not_Persisted>
+/\ elections = { [ eterm |-> 2,
+    eleader |-> "s3",
+    elog |-> <<>>,
+    evotes |-> {"s1", "s3"},
+    evoterLog |-> [s1 |-> <<>>, s3 |-> <<>>] ] }
+/\ committedLogDecrease = FALSE
+/\ messages = ( [ mtype |-> RequestVoteResponse,
+    mterm |-> 2,
+    msource |-> "s1",
+    mdest |-> "s3",
+    mlog |-> <<>>,
+    mvoteGranted |-> TRUE ] :>
+      0 @@
+  [ mtype |-> RequestVoteResponse,
+    mterm |-> 2,
+    msource |-> "s3",
+    mdest |-> "s3",
+    mlog |-> <<>>,
+    mvoteGranted |-> TRUE ] :>
+      0 @@
+  [ mtype |-> RequestVoteRequest,
+    mterm |-> 2,
+    mlastLogTerm |-> 0,
+    mlastLogIndex |-> 0,
+    msource |-> "s3",
+    mdest |-> "s1" ] :>
+      0 @@
+  [ mtype |-> RequestVoteRequest,
+    mterm |-> 2,
+    mlastLogTerm |-> 0,
+    mlastLogIndex |-> 0,
+    msource |-> "s3",
+    mdest |-> "s3" ] :>
+      0 )
+/\ clientRequests = 1
+/\ matchIndex = [ s1 |-> [s1 |-> 0, s2 |-> 0, s3 |-> 0],
+  s2 |-> [s1 |-> 0, s2 |-> 0, s3 |-> 0],
+  s3 |-> [s1 |-> 0, s2 |-> 0, s3 |-> 0] ]
+/\ log = [s1 |-> <<>>, s2 |-> <<>>, s3 |-> <<>>]
+/\ state = [s1 |-> Candidate, s2 |-> Follower, s3 |-> Leader]
+/\ allLogs = {<<>>}
+/\ commitIndex = [s1 |-> 0, s2 |-> 0, s3 |-> 0]
+/\ currentTerm = [s1 |-> 2, s2 |-> 1, s3 |-> 2]
+/\ votesResponded = [s1 |-> {}, s2 |-> {}, s3 |-> {"s1", "s3"}]
+/\ committedLog = <<>>
+/\ nextIndex = [ s1 |-> [s1 |-> 1, s2 |-> 1, s3 |-> 1],
+  s2 |-> [s1 |-> 1, s2 |-> 1, s3 |-> 1],
+  s3 |-> [s1 |-> 1, s2 |-> 1, s3 |-> 1] ]
+/\ votesGranted = [s1 |-> {}, s2 |-> {}, s3 |-> {"s1", "s3"}]
+/\ voterLog = [s1 |-> << >>, s2 |-> << >>, s3 |-> [s1 |-> <<>>, s3 |-> <<>>]]
+/\ votedFor = [s1 |-> "s3", s2 |-> Nil, s3 |-> "s3"]
+
+@!@!@ENDMSG 2217 @!@!@
+@!@!@STARTMSG 2217:4 @!@!@
+11: <Action line 475, col 9 to line 486, col 58 of module Raft_Term_Not_Persisted>
+/\ elections = { [ eterm |-> 2,
+    eleader |-> "s3",
+    elog |-> <<>>,
+    evotes |-> {"s1", "s3"},
+    evoterLog |-> [s1 |-> <<>>, s3 |-> <<>>] ] }
+/\ committedLogDecrease = FALSE
+/\ messages = ( [ mtype |-> RequestVoteResponse,
+    mterm |-> 2,
+    msource |-> "s1",
+    mdest |-> "s3",
+    mlog |-> <<>>,
+    mvoteGranted |-> TRUE ] :>
+      0 @@
+  [ mtype |-> RequestVoteResponse,
+    mterm |-> 2,
+    msource |-> "s3",
+    mdest |-> "s3",
+    mlog |-> <<>>,
+    mvoteGranted |-> TRUE ] :>
+      0 @@
+  [ mtype |-> RequestVoteRequest,
+    mterm |-> 2,
+    mlastLogTerm |-> 0,
+    mlastLogIndex |-> 0,
+    msource |-> "s3",
+    mdest |-> "s1" ] :>
+      0 @@
+  [ mtype |-> RequestVoteRequest,
+    mterm |-> 2,
+    mlastLogTerm |-> 0,
+    mlastLogIndex |-> 0,
+    msource |-> "s3",
+    mdest |-> "s3" ] :>
+      0 )
+/\ clientRequests = null
+/\ matchIndex = [ s1 |-> [s1 |-> 0, s2 |-> 0, s3 |-> 0],
+  s2 |-> [s1 |-> 0, s2 |-> 0, s3 |-> 0],
+  s3 |-> [s1 |-> 0, s2 |-> 0, s3 |-> 0] ]
+/\ log = [s1 |-> <<>>, s2 |-> <<>>, s3 |-> <<>>]
+/\ state = [s1 |-> Candidate, s2 |-> Follower, s3 |-> Leader]
+/\ allLogs = {<<>>}
+/\ commitIndex = [s1 |-> 0, s2 |-> 0, s3 |-> 0]
+/\ currentTerm = [s1 |-> 2, s2 |-> 1, s3 |-> 2]
+/\ votesResponded = [s1 |-> {}, s2 |-> {}, s3 |-> {"s1", "s3"}]
+/\ committedLog = <<>>
+/\ nextIndex = [ s1 |-> [s1 |-> 1, s2 |-> 1, s3 |-> 1],
+  s2 |-> [s1 |-> 1, s2 |-> 1, s3 |-> 1],
+  s3 |-> [s1 |-> 1, s2 |-> 1, s3 |-> 1] ]
+/\ votesGranted = [s1 |-> {}, s2 |-> {}, s3 |-> {"s1", "s3"}]
+/\ voterLog = [s1 |-> << >>, s2 |-> << >>, s3 |-> [s1 |-> <<>>, s3 |-> <<>>]]
+/\ votedFor = [s1 |-> "s3", s2 |-> Nil, s3 |-> "s3"]
+
+@!@!@ENDMSG 2217 @!@!@
+@!@!@STARTMSG 2201:0 @!@!@
+The coverage statistics at 2016-07-20 10:04:12
+@!@!@ENDMSG 2201 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 130, col 12 to line 130, col 47 of module Raft_Term_Not_Persisted: 6442133
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 134, col 15 to line 134, col 53 of module Raft_Term_Not_Persisted: 2257400
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 138, col 5 to line 138, col 72 of module Raft_Term_Not_Persisted: 999414
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 179, col 8 to line 179, col 55 of module Raft_Term_Not_Persisted: 2462916
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 180, col 8 to line 180, col 58 of module Raft_Term_Not_Persisted: 2462916
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 181, col 8 to line 181, col 56 of module Raft_Term_Not_Persisted: 2462916
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 182, col 8 to line 182, col 69 of module Raft_Term_Not_Persisted: 2462916
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 183, col 8 to line 183, col 71 of module Raft_Term_Not_Persisted: 2462916
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 184, col 8 to line 184, col 72 of module Raft_Term_Not_Persisted: 2462916
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 185, col 8 to line 185, col 54 of module Raft_Term_Not_Persisted: 2462916
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 186, col 8 to line 186, col 109 of module Raft_Term_Not_Persisted: 2462916
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 187, col 20 to line 187, col 27 of module Raft_Term_Not_Persisted: 2462916
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 187, col 30 to line 187, col 37 of module Raft_Term_Not_Persisted: 2462916
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 187, col 40 to line 187, col 42 of module Raft_Term_Not_Persisted: 2462916
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 187, col 45 to line 187, col 53 of module Raft_Term_Not_Persisted: 2462916
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 187, col 56 to line 187, col 69 of module Raft_Term_Not_Persisted: 2462916
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 187, col 72 to line 187, col 83 of module Raft_Term_Not_Persisted: 2462916
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 187, col 86 to line 187, col 105 of module Raft_Term_Not_Persisted: 2462916
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 191, col 18 to line 191, col 57 of module Raft_Term_Not_Persisted: 2462915
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 192, col 18 to line 192, col 78 of module Raft_Term_Not_Persisted: 2462915
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 195, col 18 to line 195, col 57 of module Raft_Term_Not_Persisted: 2462915
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 196, col 18 to line 196, col 68 of module Raft_Term_Not_Persisted: 2462915
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 197, col 18 to line 197, col 66 of module Raft_Term_Not_Persisted: 2462915
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 198, col 18 to line 198, col 79 of module Raft_Term_Not_Persisted: 2462915
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 199, col 30 to line 199, col 37 of module Raft_Term_Not_Persisted: 2462915
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 244, col 8 to line 244, col 49 of module Raft_Term_Not_Persisted: 27
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 245, col 8 to line 246, col 60 of module Raft_Term_Not_Persisted: 27
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 247, col 8 to line 248, col 46 of module Raft_Term_Not_Persisted: 27
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 249, col 8 to line 254, col 54 of module Raft_Term_Not_Persisted: 27
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 255, col 20 to line 255, col 27 of module Raft_Term_Not_Persisted: 27
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 255, col 30 to line 255, col 40 of module Raft_Term_Not_Persisted: 27
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 255, col 43 to line 255, col 50 of module Raft_Term_Not_Persisted: 27
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 263, col 15 to line 263, col 47 of module Raft_Term_Not_Persisted: 1
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 265, col 15 to line 265, col 50 of module Raft_Term_Not_Persisted: 1
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 266, col 20 to line 266, col 27 of module Raft_Term_Not_Persisted: 1
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 267, col 32 to line 267, col 42 of module Raft_Term_Not_Persisted: 1
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 267, col 45 to line 267, col 56 of module Raft_Term_Not_Persisted: 1
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 267, col 59 to line 267, col 78 of module Raft_Term_Not_Persisted: 1
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 294, col 14 to line 294, col 70 of module Raft_Term_Not_Persisted: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 295, col 14 to line 296, col 109 of module Raft_Term_Not_Persisted: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 297, col 14 to line 297, col 44 of module Raft_Term_Not_Persisted: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 298, col 20 to line 298, col 27 of module Raft_Term_Not_Persisted: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 298, col 69 to line 298, col 71 of module Raft_Term_Not_Persisted: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 314, col 24 to line 314, col 61 of module Raft_Term_Not_Persisted: 614190
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 315, col 34 to line 315, col 41 of module Raft_Term_Not_Persisted: 385224
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 325, col 23 to line 325, col 27 of module Raft_Term_Not_Persisted: 999414
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 325, col 30 to line 325, col 40 of module Raft_Term_Not_Persisted: 999414
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 333, col 8 to line 334, col 57 of module Raft_Term_Not_Persisted: 180746
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 336, col 14 to line 337, col 59 of module Raft_Term_Not_Persisted: 135097
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 338, col 14 to line 339, col 59 of module Raft_Term_Not_Persisted: 135097
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 341, col 26 to line 341, col 37 of module Raft_Term_Not_Persisted: 45649
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 341, col 40 to line 341, col 47 of module Raft_Term_Not_Persisted: 45649
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 343, col 32 to line 343, col 39 of module Raft_Term_Not_Persisted: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 371, col 17 to line 371, col 55 of module Raft_Term_Not_Persisted: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 372, col 29 to line 372, col 39 of module Raft_Term_Not_Persisted: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 372, col 42 to line 372, col 49 of module Raft_Term_Not_Persisted: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 372, col 61 to line 372, col 68 of module Raft_Term_Not_Persisted: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 385, col 27 to line 386, col 61 of module Raft_Term_Not_Persisted: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 402, col 30 to line 402, col 59 of module Raft_Term_Not_Persisted: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 403, col 104 to line 403, col 123 of module Raft_Term_Not_Persisted: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 403, col 51 to line 403, col 61 of module Raft_Term_Not_Persisted: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 403, col 64 to line 403, col 71 of module Raft_Term_Not_Persisted: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 403, col 74 to line 403, col 87 of module Raft_Term_Not_Persisted: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 403, col 90 to line 403, col 101 of module Raft_Term_Not_Persisted: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 407, col 27 to line 408, col 68 of module Raft_Term_Not_Persisted: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 409, col 104 to line 409, col 123 of module Raft_Term_Not_Persisted: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 409, col 51 to line 409, col 61 of module Raft_Term_Not_Persisted: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 409, col 64 to line 409, col 71 of module Raft_Term_Not_Persisted: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 409, col 74 to line 409, col 87 of module Raft_Term_Not_Persisted: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 409, col 90 to line 409, col 101 of module Raft_Term_Not_Persisted: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 417, col 14 to line 417, col 74 of module Raft_Term_Not_Persisted: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 418, col 14 to line 418, col 70 of module Raft_Term_Not_Persisted: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 420, col 14 to line 421, col 61 of module Raft_Term_Not_Persisted: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 422, col 26 to line 422, col 35 of module Raft_Term_Not_Persisted: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 424, col 56 to line 424, col 64 of module Raft_Term_Not_Persisted: 0
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 429, col 8 to line 429, col 60 of module Raft_Term_Not_Persisted: 769108
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 430, col 8 to line 430, col 61 of module Raft_Term_Not_Persisted: 769108
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 431, col 8 to line 431, col 56 of module Raft_Term_Not_Persisted: 769108
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 433, col 20 to line 433, col 27 of module Raft_Term_Not_Persisted: 769108
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 486, col 12 to line 486, col 58 of module Raft_Term_Not_Persisted: 15393914
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 55, col 17 to line 55, col 27 of module Raft_Term_Not_Persisted: 8699534
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 55, col 30 to line 55, col 34 of module Raft_Term_Not_Persisted: 8699534
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 55, col 37 to line 55, col 44 of module Raft_Term_Not_Persisted: 8699534
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 70, col 14 to line 70, col 16 of module Raft_Term_Not_Persisted: 12930997
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 70, col 19 to line 70, col 29 of module Raft_Term_Not_Persisted: 12930997
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 70, col 32 to line 70, col 45 of module Raft_Term_Not_Persisted: 12930997
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 70, col 48 to line 70, col 59 of module Raft_Term_Not_Persisted: 12930997
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 70, col 62 to line 70, col 81 of module Raft_Term_Not_Persisted: 12930997
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 84, col 20 to line 84, col 33 of module Raft_Term_Not_Persisted: 10287337
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 84, col 36 to line 84, col 47 of module Raft_Term_Not_Persisted: 10287337
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 84, col 50 to line 84, col 57 of module Raft_Term_Not_Persisted: 10287337
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 92, col 17 to line 92, col 25 of module Raft_Term_Not_Persisted: 12930971
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 92, col 28 to line 92, col 37 of module Raft_Term_Not_Persisted: 12930971
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2221:0 @!@!@
+  line 92, col 40 to line 92, col 48 of module Raft_Term_Not_Persisted: 12930971
+@!@!@ENDMSG 2221 @!@!@
+@!@!@STARTMSG 2202:0 @!@!@
+End of statistics.
+@!@!@ENDMSG 2202 @!@!@
+@!@!@STARTMSG 2200:0 @!@!@
+Progress(11) at 2016-07-20 10:04:12: 15393918 states generated (16,500,260 s/min), 4205459 distinct states found (4,507,700 ds/min), 3384487 states left on queue.
+@!@!@ENDMSG 2200 @!@!@
+@!@!@STARTMSG 2199:0 @!@!@
+15393918 states generated, 4205459 distinct states found, 3384487 states left on queue.
+@!@!@ENDMSG 2199 @!@!@
+@!@!@STARTMSG 2194:0 @!@!@
+The depth of the complete state graph search is 11.
+@!@!@ENDMSG 2194 @!@!@
+@!@!@STARTMSG 2186:0 @!@!@
+Finished in 56s at (2016-07-20 10:04:12)
+@!@!@ENDMSG 2186 @!@!@

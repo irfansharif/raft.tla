@@ -1,4 +1,4 @@
---------------------------------- MODULE raft ---------------------------------
+--------------------------------- MODULE Raft_Term_Not_Persisted ---------------------------------
 \* This is the formal specification for the Raft consensus algorithm.
 \*
 \* Copyright 2014 Diego Ongaro.
@@ -183,7 +183,8 @@ Restart(i) ==
     /\ nextIndex'      = [nextIndex EXCEPT ![i] = [j \in Server |-> 1]]
     /\ matchIndex'     = [matchIndex EXCEPT ![i] = [j \in Server |-> 0]]
     /\ commitIndex'    = [commitIndex EXCEPT ![i] = 0]
-    /\ UNCHANGED <<messages, currentTerm, votedFor, log, elections, clientRequests, committedLog, committedLogDecrease>>
+    /\ currentTerm'    = [currentTerm EXCEPT ![i] = IF Len(log[i]) > 0 THEN log[i][Len(log[i])].term ELSE 1 ]
+    /\ UNCHANGED <<messages, votedFor, log, elections, clientRequests, committedLog, committedLogDecrease>>
 
 \* Server i times out and starts a new election.
 Timeout(i) == /\ state[i] \in {Follower, Candidate}

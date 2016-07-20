@@ -490,7 +490,6 @@ Spec == Init /\ [][Next]_vars
 
 \* The following are a set of verification by jinlmsft@hotmail.com
 BothLeader( i, j ) == 
-    /\ i /= j
     /\ currentTerm[i] = currentTerm[j]
     /\ state[i] = Leader
     /\ state[j] = Leader
