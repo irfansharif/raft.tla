@@ -11,13 +11,14 @@ EXTENDS Naturals, FiniteSets, Sequences, TLC
 CONSTANTS Server
 
 \* Server states.
-CONSTANTS Follower, Candidate, Leader
+CONSTANTS Follower, PreCandidate, Candidate, Leader
 
 \* A reserved value.
 CONSTANTS Nil
 
 \* Message types:
 CONSTANTS RequestVoteRequest, RequestVoteResponse,
+          RequestPreVoteRequest, RequestPreVoteResponse,
           AppendEntriesRequest, AppendEntriesResponse
           
 \* Maximum number of client requests
@@ -27,7 +28,8 @@ CONSTANTS MaxClientRequests
 
 ----
 \* Global variables
-
+\* TODO(irfansharif): Allow transition from follower to candidate directly?
+\* Semi-randomly i.e.
 
 
 \* A bag of records representing requests and responses sent from one server
@@ -52,7 +54,7 @@ VARIABLE allLogs
 
 \* The server's term number.
 VARIABLE currentTerm
-\* The server's state (Follower, Candidate, or Leader).
+\* The server's state (Follower, PreCandidate, Candidate, or Leader).
 VARIABLE state
 \* The candidate the server voted for in its current term, or
 \* Nil if it hasn't voted for any.
@@ -193,10 +195,10 @@ Restart(i) ==
     /\ commitIndex'    = [commitIndex EXCEPT ![i] = 0]
     /\ UNCHANGED <<messages, currentTerm, votedFor, log, elections, clientRequests, committedLog, committedLogDecrease>>
 
-\* Server i times out and starts a new election.
-Timeout(i) == /\ state[i] \in {Follower, Candidate}
-              /\ state' = [state EXCEPT ![i] = Candidate]
-              /\ currentTerm' = [currentTerm EXCEPT ![i] = currentTerm[i] + 1]
+\* Server i times out and enters PreCandidate phase.
+Timeout(i) == /\ state[i] \in {Follower, PreCandidate, Candidate}
+              /\ state' = [state EXCEPT ![i] = PreCandidate]
+              /\ UNCHANGED currentTerm
               \* Most implementations would probably just set the local vote
               \* atomically, but messaging localhost for it is weaker.
               /\ votedFor' = [votedFor EXCEPT ![i] = Nil]
@@ -204,6 +206,17 @@ Timeout(i) == /\ state[i] \in {Follower, Candidate}
               /\ votesGranted'   = [votesGranted EXCEPT ![i] = {}]
               /\ voterLog'       = [voterLog EXCEPT ![i] = [j \in {} |-> <<>>]]
               /\ UNCHANGED <<messages, leaderVars, logVars>>
+
+\* PreCandidate i sends j a RequestPreVote request.
+RequestPreVote(i,j) ==
+    /\ state[i] = PreCandidate
+    /\ Send([mtype         |-> RequestPreVoteRequest,
+             mterm         |-> currentTerm[i],
+             mlastLogTerm  |-> LastTerm(log[i]),
+             mlastLogIndex |-> Len(log[i]),
+             msource       |-> i,
+             mdest         |-> j])
+    /\ UNCHANGED <<serverVars, votesGranted, voterLog, leaderVars, logVars, votesSent>>
 
 \* Candidate i sends j a RequestVote request.
 RequestVote(i,j) ==
@@ -260,6 +273,21 @@ BecomeLeader(i) ==
                            evoterLog |-> voterLog[i]]}
     /\ UNCHANGED <<messages, currentTerm, votedFor, candidateVars, logVars>>
 
+\* PreCandidate i transitions to Candidate.
+BecomeCandidate(i) ==
+              /\ state[i] = PreCandidate
+              /\ votesGranted[i] \in Quorum
+              /\ state' = [state EXCEPT ![i] = Candidate]
+              /\ currentTerm' = [currentTerm EXCEPT ![i] = currentTerm[i] + 1]
+              \* Most implementations would probably just set the local vote
+              \* atomically, but messaging localhost for it is weaker.
+              /\ votedFor' = [votedFor EXCEPT ![i] = Nil]
+              /\ votesSent' = [votesSent EXCEPT ![i] = FALSE ]
+              /\ votesGranted'   = [votesGranted EXCEPT ![i] = {}]
+              /\ voterLog'       = [voterLog EXCEPT ![i] = [j \in {} |-> <<>>]]
+              /\ UNCHANGED <<messages, leaderVars, logVars>>
+
+
 \* Leader i receives a client request to add v to the log.
 ClientRequest(i) ==
     /\ state[i] = Leader
@@ -308,6 +336,28 @@ AdvanceCommitIndex(i) ==
 \* Message handlers
 \* i = recipient, j = sender, m = message
 
+\* Server i receives a RequestPreVote request from server j with
+\* m.mterm <= currentTerm[i].
+HandleRequestPreVoteRequest(i, j, m) ==
+    LET logOk == \/ m.mlastLogTerm > LastTerm(log[i])
+                 \/ /\ m.mlastLogTerm = LastTerm(log[i])
+                    /\ m.mlastLogIndex >= Len(log[i])
+        grant == /\ m.mterm = currentTerm[i]
+                 /\ logOk
+                 /\ votedFor[i] \in {Nil}
+    IN /\ m.mterm <= currentTerm[i]
+       /\ Reply([mtype        |-> RequestPreVoteResponse,
+                 mterm        |-> currentTerm[i],
+                 mvoteGranted |-> grant,
+                 \* mlog is used just for the `elections' history variable for
+                 \* the proof. It would not exist in a real implementation.
+                 mlog         |-> log[i],
+                 msource      |-> i,
+                 mdest        |-> j],
+                 m)
+       /\ UNCHANGED votedFor
+       /\ UNCHANGED <<state, currentTerm, candidateVars, leaderVars, logVars>>
+
 \* Server i receives a RequestVote request from server j with
 \* m.mterm <= currentTerm[i].
 HandleRequestVoteRequest(i, j, m) ==
@@ -330,6 +380,24 @@ HandleRequestVoteRequest(i, j, m) ==
                  mdest        |-> j],
                  m)
        /\ UNCHANGED <<state, currentTerm, candidateVars, leaderVars, logVars>>
+
+\* Server i receives a RequestPreVote response from server j with
+\* m.mterm = currentTerm[i].
+HandleRequestPreVoteResponse(i, j, m) ==
+    \* This tallies votes even when the current state is not PreCandidate, but
+    \* they won't be looked at, so it doesn't matter.
+    /\ m.mterm = currentTerm[i]
+    /\ \/ /\ m.mvoteGranted
+          /\ votesGranted' = [votesGranted EXCEPT ![i] =
+                                  votesGranted[i] \cup {j}]
+          /\ voterLog' = [voterLog EXCEPT ![i] =
+                              voterLog[i] @@ (j :> m.mlog)]
+          /\ UNCHANGED <<votesSent>>
+       \/ /\ ~m.mvoteGranted
+          /\ UNCHANGED <<votesSent, votesGranted, voterLog>>
+    /\ Discard(m)
+    /\ UNCHANGED <<serverVars, votedFor, leaderVars, logVars>>
+
 
 \* Server i receives a RequestVote response from server j with
 \* m.mterm = currentTerm[i].
@@ -373,7 +441,7 @@ HandleAppendEntriesRequest(i, j, m) ==
              /\ UNCHANGED <<serverVars, logVars>>
           \/ \* return to follower state
              /\ m.mterm = currentTerm[i]
-             /\ state[i] = Candidate
+             /\ state[i] \in {PreCandidate, Candidate}
              /\ state' = [state EXCEPT ![i] = Follower]
              /\ UNCHANGED <<currentTerm, votedFor, logVars, messages>>
           \/ \* accept request
@@ -452,6 +520,11 @@ Receive(m) ==
     IN \* Any RPC with a newer term causes the recipient to advance
        \* its term first. Responses with stale terms are ignored.
        \/ UpdateTerm(i, j, m)
+       \/ /\ m.mtype = RequestPreVoteRequest
+          /\ HandleRequestPreVoteRequest(i, j, m)
+       \/ /\ m.mtype = RequestPreVoteResponse
+          /\ \/ DropStaleResponse(i, j, m)
+             \/ HandleRequestPreVoteResponse(i, j, m)
        \/ /\ m.mtype = RequestVoteRequest
           /\ HandleRequestVoteRequest(i, j, m)
        \/ /\ m.mtype = RequestVoteResponse
@@ -481,8 +554,10 @@ DropMessage(m) ==
 \* Defines how the variables may transition.
 Next == /\ \/ \E i \in Server : Restart(i)
            \/ \E i \in Server : Timeout(i)
+           \/ \E i, j \in Server : RequestPreVote(i, j)
            \/ \E i, j \in Server : RequestVote(i, j)
            \/ \E i \in Server : BecomeLeader(i)
+           \/ \E i \in Server : BecomeCandidate(i)
            \/ \E i \in Server : ClientRequest(i)
            \/ \E i \in Server : AdvanceCommitIndex(i)
            \/ \E i,j \in Server : AppendEntries(i, j)
@@ -518,6 +593,8 @@ MoreThanOneLeader ==
 ===============================================================================
 
 \* Changelog:
+\* 2017-09-07:
+\* - Formalise PreVote mechanism.
 \*
 \* 2014-12-02:
 \* - Fix AppendEntries to only send one entry at a time, as originally
